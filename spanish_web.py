@@ -878,9 +878,7 @@ def find_issues(user_input, correct):
 
 @app.route("/")
 def index():
-    lang = session.get("lang")
-    if lang and lang in LANG_META:
-        return redirect(url_for("train"))
+    session.pop("lang", None)
     return render_template_string(SELECT_HTML)
 
 @app.route("/select/<lang>")
